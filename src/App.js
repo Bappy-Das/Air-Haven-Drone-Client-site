@@ -3,9 +3,14 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
+import DashBoard from './pages/DashBoard/DashBoard';
+import ExploreProduct from './pages/ExploreProduct/ExploreProduct';
 import Home from './pages/Home/Home';
+import Login from './pages/Home/Login/Login';
+import Register from './pages/Home/Register/Register';
 import NotFound from './pages/NotFound/NotFound';
-// import { Button } from '@mui/material';
+import ProductInfo from './pages/ProductInfo/ProductInfo';
+import Footer from './pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -24,10 +29,27 @@ function App() {
           <Route path="/contact">
             <Contact></Contact>
           </Route>
+          <Route path="/login">
+            <Login></Login>
+          </Route>
+          <Route path="/register">
+            <Register></Register>
+          </Route>
+
+          <Route path="/allproducts">
+            <ExploreProduct></ExploreProduct>
+          </Route>
+          <Route path="/productinfo/:productId">
+            <ProductInfo></ProductInfo>
+          </Route>
+          <Route path="/dashboard">
+            <DashBoard></DashBoard>
+          </Route>
           <Route path="/*">
             <NotFound></NotFound>
           </Route>
         </Switch>
+        <Footer></Footer>
       </BrowserRouter>
     </div>
   );

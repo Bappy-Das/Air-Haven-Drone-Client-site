@@ -11,7 +11,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import useFirebase from '../../../hooks/useFirebase';
+// import logo from '../../../images/Dronetastic-lo.png'
 
 // For Dark Theme
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -24,7 +26,7 @@ import { Link, NavLink } from 'react-router-dom';
 //     },
 // });
 const Navber = () => {
-
+    const { user, logOut } = useFirebase();
     const theme = useTheme();
     const isMatches = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -46,14 +48,14 @@ const Navber = () => {
                 <AppBar position="static">
                     <Container>
                         <Toolbar>
-                            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
                                 <NavLink to="/"
                                     style={{
                                         textDecoration: 'none',
                                         color: 'white'
                                     }}
                                 >
-                                    Logo Here
+                                    AirHaven
                                 </NavLink>
                             </Typography>
 
@@ -82,6 +84,14 @@ const Navber = () => {
                                     >
                                         <Button sx={{ m: 2 }} color="inherit">Home</Button>
                                     </NavLink>
+                                    <NavLink to="/allproducts"
+                                        style={{
+                                            textDecoration: 'none',
+                                            color: 'white'
+                                        }}
+                                    >
+                                        <Button sx={{ m: 2 }} color="inherit">Products</Button>
+                                    </NavLink>
                                     <NavLink to="/about"
                                         style={{
                                             textDecoration: 'none',
@@ -98,15 +108,39 @@ const Navber = () => {
                                     >
                                         <Button sx={{ m: 2 }} color="inherit">Contact Us</Button>
                                     </NavLink>
-                                    <NavLink to="/"
-                                        style={{
-                                            textDecoration: 'none',
-                                            color: 'white'
-                                        }}
-                                    >
-                                        <Button sx={{ m: 2 }} color="inherit">Log In</Button>
-                                    </NavLink>
-
+                                    {
+                                        user?.email ? <>
+                                            <NavLink to="/dashboard"
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: 'white'
+                                                }}
+                                            >
+                                                <Button sx={{ m: 2 }} color="inherit">DashBoard</Button>
+                                            </NavLink>
+                                            <NavLink to="/login"
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: 'white'
+                                                }}
+                                            >
+                                                <Button
+                                                    sx={{ m: 2 }}
+                                                    color="inherit"
+                                                    onClick={logOut}
+                                                >Log Out</Button>
+                                            </NavLink>
+                                        </>
+                                            :
+                                            <NavLink to="/login"
+                                                style={{
+                                                    textDecoration: 'none',
+                                                    color: 'white'
+                                                }}
+                                            >
+                                                <Button sx={{ m: 2 }} color="inherit">Log In</Button>
+                                            </NavLink>
+                                    }
 
                                 </div>}
 
@@ -120,6 +154,7 @@ const Navber = () => {
                                     'aria-labelledby': 'basic-button',
                                 }}
                             >
+
                                 <NavLink to="/"
                                     style={{
                                         textDecoration: 'none',
@@ -156,6 +191,7 @@ const Navber = () => {
                                 >
                                     <MenuItem>Log In</MenuItem>
                                 </NavLink>
+
                             </Menu>
                         </Toolbar>
                     </Container>

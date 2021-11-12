@@ -38,7 +38,7 @@ const PurchaseModal = ({ open, handleClose, productInfo }) => {
     const handlePurchaseSubmit = e => {
         const order = {
             ...orders,
-            status: "pending",
+            status: "Pending",
             productInfo: productInfo,
         }
         axios.post('http://localhost:5000/purchaseorder', order)

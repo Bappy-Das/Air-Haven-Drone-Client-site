@@ -2,9 +2,11 @@
 import React from 'react';
 import Navber from '../Shared/Navber/Navber';
 
+
 import Banner from './Banner/Banner';
 import Products from './Products/Products';
-// import Ban2 from './Banner/Ban2';
+import Review from './Review/Review';
+
 
 const Home = () => {
     return (
@@ -13,6 +15,8 @@ const Home = () => {
             {/* <Ban2></Ban2> */}
             <Banner></Banner>
             <Products></Products>
+            <Review></Review>
+
 
         </>
     );

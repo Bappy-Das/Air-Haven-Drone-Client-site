@@ -38,7 +38,7 @@ const Register = () => {
     }
 
     const handleSubmit = (event) => {
-        register(loginData.email, loginData.password, loginData.name)
+        register(loginData.email, loginData.password, loginData.name, loginData.phone)
         event.preventDefault();
         // const data = new FormData(event.currentTarget);
 

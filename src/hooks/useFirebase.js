@@ -1,3 +1,4 @@
+import axios from "axios";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
@@ -34,6 +35,9 @@ const useFirebase = () => {
             .then((userCredential) => {
                 const newUser = { email, displayName: name };
                 setUser(newUser)
+
+
+                // set DisplayName
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -41,6 +45,11 @@ const useFirebase = () => {
                 }).catch((error) => {
 
                 });
+
+
+                // save user info to database
+                saveUserData(email, name)
+
                 const user = userCredential.user;
             })
             .catch((error) => {
@@ -76,6 +85,19 @@ const useFirebase = () => {
     }, [])
 
 
+    // Save user info to database
+    const saveUserData = (email, displayName) => {
+        const user = { email, displayName }
+        axios.post('http://localhost:5000/adduser', user)
+            .then()
+    }
+    const saveUserGoogle = (email, displayName) => {
+        const user = { email, displayName }
+        axios.put('http://localhost:5000/adduser', user)
+            .then()
+    }
+
+
     // Log Out the user
     const logOut = () => {
         setIsLoading(true)
@@ -98,7 +120,8 @@ const useFirebase = () => {
         logOut,
         isLoading,
         register,
-        emailPassLogin
+        emailPassLogin,
+        saveUserGoogle
     }
 
 };

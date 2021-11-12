@@ -33,11 +33,14 @@ const PurchaseModal = ({ open, handleClose, productInfo }) => {
         const newLoginData = { ...orders };
         newLoginData[field] = value;
         setOrder(newLoginData)
+        console.log(orders)
     }
     // const onSubmit = data => {
     const handlePurchaseSubmit = e => {
         const order = {
             ...orders,
+            orderBy: user,
+            orderDate: new Date().toLocaleDateString(),
             status: "Pending",
             productInfo: productInfo,
         }

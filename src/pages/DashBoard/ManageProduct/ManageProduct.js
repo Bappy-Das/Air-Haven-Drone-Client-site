@@ -11,78 +11,79 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import { Button, Typography } from '@mui/material';
-import axios from 'axios';
+
 import { Box } from '@mui/system';
-import noOrder from '../../../images/noOrder.gif'
+import noOrder from '../../../images/noOrder.gif';
+import Avatar from '@mui/material/Avatar';
 
 
 
-const ManageOder = () => {
-    const [orders, setOrder] = useState();
+
+const ManageProduct = () => {
+
     const [deleteAlert, setDeleteAlert] = useState(false);
-    const [status, setStatus] = useState(false);
-    useEffect(() => {
-        fetch('http://localhost:5000/orders')
-            .then(res => res.json())
-            .then(data => setOrder(data))
-    }, [status])
 
+    const [product, setProduct] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(res => res.json())
+            .then(data => setProduct(data))
+    }, [product])
 
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`http://localhost:5000/order/${id}`, { method: "DELETE" })
+            fetch(`http://localhost:5000/product/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
                         // alert("data delete succesfully")
                         setDeleteAlert(true);
-                        const remaining = orders.filter(product => product._id !== id)
-                        setOrder(remaining);
+                        const remaining = product.filter(product => product._id !== id)
+                        setProduct(remaining);
                     }
                 })
         }
 
     }
-    const handleStatus = id => {
-        console.log(id)
-        axios.put(`http://localhost:5000/updatestatus/${id}`)
-            // .then(res => console.log("Order Approved"))
-            .then((data) => setStatus(true))
-
-    }
 
 
-    // console.log(orders)
     return (
         <div>
-            <h1>Manage All Order</h1>
+            <h1>Manage All Product</h1>
             {deleteAlert && <Stack sx={{ width: '100%', my: 5 }} spacing={2}>
                 <Alert variant="filled" severity="error">
-                    Order Delete Succesfully
+                    Product Delete Succesfully
                 </Alert>
             </Stack>}
             <TableContainer component={Paper}>
                 {
-                    orders?.length !== 0 ?
+                    product?.length !== 0 ?
                         <Table sx={{ minWidth: 650 }} aria-label="simple table">
                             <TableHead>
                                 <TableRow>
-                                    <TableCell align="left">Product Name</TableCell>
-                                    <TableCell align="left">Address</TableCell>
-                                    <TableCell align="left">Phone</TableCell>
-                                    <TableCell align="left">Status</TableCell>
-                                    <TableCell align="left"></TableCell>
+                                    <TableCell align="center">Product Image</TableCell>
+                                    <TableCell align="center">Name</TableCell>
+                                    <TableCell align="center">Description</TableCell>
+                                    <TableCell align="center">Price</TableCell>
+                                    <TableCell align="center"></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {
-                                    orders?.map(pd => <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                    product?.map(pd => <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
 
-                                        <TableCell align="left">{pd?.productInfo?.name}</TableCell>
-                                        <TableCell align="left">{pd?.address}</TableCell>
-                                        <TableCell align="left">{pd?.orderBy?.email}</TableCell>
-                                        <TableCell align="left">{pd?.status}</TableCell>
+                                        <TableCell align="center">
+                                            <Avatar
+                                                variant="square"
+                                                alt="Remy Sharp"
+                                                src={pd?.img}
+                                                sx={{ width: 100, height: 100 }}
+                                            />
+                                        </TableCell>
+                                        <TableCell align="center">{pd?.name}</TableCell>
+                                        <TableCell align="center">{pd?.describe.slice(0, 40)}</TableCell>
+                                        <TableCell align="center">{pd?.price}</TableCell>
                                         <TableCell align="center">
                                             <Button
                                                 onClick={() => handleDelete(pd?._id)}
@@ -92,13 +93,7 @@ const ManageOder = () => {
                                                 color="error">
                                                 Delete
                                             </Button>
-                                            <Button
-                                                onClick={() => handleStatus(pd?._id)}
-                                                sx={{ m: 2 }}
-                                                variant="contained"
-                                                color="success">
-                                                Approved Order
-                                            </Button>
+
                                         </TableCell>
                                     </TableRow>)
                                 }
@@ -125,4 +120,4 @@ const ManageOder = () => {
     );
 };
 
-export default ManageOder;
+export default ManageProduct;

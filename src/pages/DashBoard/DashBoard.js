@@ -23,6 +23,9 @@ import { Button } from '@mui/material';
 import ManageOder from './ManageOrder/ManageOder';
 import useFirebase from '../../hooks/useFirebase';
 import AddDrone from './AddDrone/AddDrone';
+import MyOrder from './MyOrder/MyOrder';
+import ManageProduct from './ManageProduct/ManageProduct';
+import AddReview from './AddReview/AddReview';
 
 
 const drawerWidth = 240;
@@ -47,10 +50,24 @@ function DashBoard(props) {
             <Divider />
             <Box>
                 <li style={{ listStyle: 'none' }}>
+                    <Link to='/'
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Home</Button>
+                    </Link>
+                </li>
+                <li style={{ listStyle: 'none' }}>
                     <Link to={`${url}`}
                         style={{ textDecoration: 'none' }}
                     >
                         <Button sx={{ mt: 1, ml: 3 }} color="inherit">Dashboard</Button>
+                    </Link>
+                </li>
+                <li style={{ listStyle: 'none' }}>
+                    <Link to={`${url}/manageproduct`}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Manage Product</Button>
                     </Link>
                 </li>
                 <li style={{ listStyle: 'none' }}>
@@ -61,7 +78,7 @@ function DashBoard(props) {
                     </Link>
                 </li>
                 <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/manageproduct`}
+                    <Link to={`${url}/manageorder`}
                         style={{ textDecoration: 'none' }}
                     >
                         <Button sx={{ mt: 1, ml: 3 }} color="inherit">Manage Order</Button>
@@ -75,12 +92,20 @@ function DashBoard(props) {
                     </Link>
                 </li>
                 <li style={{ listStyle: 'none' }}>
-                    <Link to='/'
+                    <Link to={`${url}/myorder`}
                         style={{ textDecoration: 'none' }}
                     >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Website Home</Button>
+                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">My order</Button>
                     </Link>
                 </li>
+                <li style={{ listStyle: 'none' }}>
+                    <Link to={`${url}/addreview`}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Add Review</Button>
+                    </Link>
+                </li>
+
                 <li style={{ listStyle: 'none' }}>
 
                     <Button onClick={logOut} sx={{ mt: 1, ml: 3 }} color="inherit">log Out</Button>
@@ -161,18 +186,19 @@ function DashBoard(props) {
                     <Route path={`${path}/addproduct`}>
                         <AddDrone></AddDrone>
                     </Route>
-                    <Route path={`${path}/manageproduct`}>
+                    <Route path={`${path}/manageorder`}>
                         <ManageOder></ManageOder>
                     </Route>
                     <Route path={`${path}/makeadmin`}>
                         <MakeAdmin></MakeAdmin>
                     </Route>
-                    <Route path={`${path}/makeadmin`}>
-                        <MakeAdmin></MakeAdmin>
+                    <Route path={`${path}/manageproduct`}>
+                        <ManageProduct></ManageProduct>
                     </Route>
-                    <Route path={`${path}/makeadmin`}>
-                        <MakeAdmin></MakeAdmin>
+                    <Route path={`${path}/addreview`}>
+                        <AddReview></AddReview>
                     </Route>
+
                 </Switch>
 
             </Box>

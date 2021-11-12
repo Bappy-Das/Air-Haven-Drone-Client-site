@@ -30,7 +30,7 @@ const theme = createTheme();
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { singInUsingGoogle, emailPassLogin } = useFirebase()
+    const { singInUsingGoogle, emailPassLogin, saveUserGoogle } = useFirebase()
     const location = useLocation()
     const history = useHistory();
     const redirect_uri = location.state?.from || '/'
@@ -57,6 +57,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         singInUsingGoogle()
             .then(result => {
+                saveUserGoogle(result.user.email, result.user.displayName)
                 history.push(redirect_uri)
                 // setUser(result.user)
                 console.log(result.user)

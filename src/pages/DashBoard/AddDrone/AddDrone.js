@@ -12,7 +12,7 @@ const AddDrone = () => {
     };
     return (
         <div>
-            <h1>this is add product</h1>
+            <h1>This is add product</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <span>Product Name :</span><br />
                 <input {...register("name")} /><br />

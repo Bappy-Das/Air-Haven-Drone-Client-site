@@ -14,24 +14,28 @@ import {
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import DashBoardHome from './DashBoardHome/DashBoardHome';
 import { Button } from '@mui/material';
 import ManageOder from './ManageOrder/ManageOder';
-import useFirebase from '../../hooks/useFirebase';
 import AddDrone from './AddDrone/AddDrone';
-import MyOrder from './MyOrder/MyOrder';
 import ManageProduct from './ManageProduct/ManageProduct';
 import AddReview from './AddReview/AddReview';
+import useAdmin from '../../hooks/useAdmin';
+import Payment from './Payment/Payment';
+import MyOrder from '../DashBoard/MyOrder/MyOrder'
+import useAuth from '../../hooks/useAuth';
+import AdminRoute from '../AdminRoute/AdminRoute';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 
 const drawerWidth = 240;
 
 function DashBoard(props) {
-    const { logOut } = useFirebase();
+    const { logOut } = useAuth();
+    const { admin } = useAdmin();
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -49,6 +53,7 @@ function DashBoard(props) {
 
             <Divider />
             <Box>
+                {/* <h1>{user?.displayName}</h1> */}
                 <li style={{ listStyle: 'none' }}>
                     <Link to='/'
                         style={{ textDecoration: 'none' }}
@@ -63,53 +68,74 @@ function DashBoard(props) {
                         <Button sx={{ mt: 1, ml: 3 }} color="inherit">Dashboard</Button>
                     </Link>
                 </li>
-                <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/manageproduct`}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Manage Product</Button>
-                    </Link>
-                </li>
-                <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/addproduct`}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Add Product</Button>
-                    </Link>
-                </li>
-                <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/manageorder`}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Manage Order</Button>
-                    </Link>
-                </li>
-                <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/makeadmin`}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Make Admin</Button>
-                    </Link>
-                </li>
-                <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/myorder`}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">My order</Button>
-                    </Link>
-                </li>
-                <li style={{ listStyle: 'none' }}>
-                    <Link to={`${url}/addreview`}
-                        style={{ textDecoration: 'none' }}
-                    >
-                        <Button sx={{ mt: 1, ml: 3 }} color="inherit">Add Review</Button>
-                    </Link>
-                </li>
 
+
+                {/* Admin can show */}
+
+                {admin &&
+                    <>
+                        <li style={{ listStyle: 'none' }}>
+                            <Link to={`${url}/manageproduct`}
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <Button sx={{ mt: 1, ml: 3 }} color="inherit">Manage Product</Button>
+                            </Link>
+                        </li>
+                        <li style={{ listStyle: 'none' }}>
+                            <Link to={`${url}/addproduct`}
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <Button sx={{ mt: 1, ml: 3 }} color="inherit">Add Product</Button>
+                            </Link>
+                        </li>
+                        <li style={{ listStyle: 'none' }}>
+                            <Link to={`${url}/manageorder`}
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <Button sx={{ mt: 1, ml: 3 }} color="inherit">Manage Order</Button>
+                            </Link>
+                        </li>
+                        <li style={{ listStyle: 'none' }}>
+                            <Link to={`${url}/makeadmin`}
+                                style={{ textDecoration: 'none' }}
+                            >
+                                <Button sx={{ mt: 1, ml: 3 }} color="inherit">Make Admin</Button>
+                            </Link>
+                        </li>
+                    </>
+                }
+
+                {/* Normal User can show */}
+
+                {!admin && <>
+                    <li style={{ listStyle: 'none' }}>
+                        <Link to={`${url}/myorder`}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Button sx={{ mt: 1, ml: 3 }} color="inherit">My order</Button>
+                        </Link>
+                    </li>
+                    <li style={{ listStyle: 'none' }}>
+                        <Link to={`${url}/addreview`}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Button sx={{ mt: 1, ml: 3 }} color="inherit">Add Review</Button>
+                        </Link>
+                    </li>
+                    <li style={{ listStyle: 'none' }}>
+                        <Link to={`${url}/payement`}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Button sx={{ mt: 1, ml: 3 }} color="inherit">Payment</Button>
+                        </Link>
+                    </li>
+
+
+                </>
+                }
                 <li style={{ listStyle: 'none' }}>
 
                     <Button onClick={logOut} sx={{ mt: 1, ml: 3 }} color="inherit">log Out</Button>
-
                 </li>
             </Box>
         </Box>
@@ -195,8 +221,16 @@ function DashBoard(props) {
                     <Route path={`${path}/manageproduct`}>
                         <ManageProduct></ManageProduct>
                     </Route>
+
+
+                    <Route path={`${path}/myorder`}>
+                        <MyOrder></MyOrder>
+                    </Route>
                     <Route path={`${path}/addreview`}>
                         <AddReview></AddReview>
+                    </Route>
+                    <Route path={`${path}/payement`}>
+                        <Payment></Payment>
                     </Route>
 
                 </Switch>

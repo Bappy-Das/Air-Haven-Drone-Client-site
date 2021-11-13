@@ -6,6 +6,7 @@ import Navber from '../Shared/Navber/Navber';
 import Banner from './Banner/Banner';
 import Products from './Products/Products';
 import Review from './Review/Review';
+import Support from './Support/Support';
 
 
 const Home = () => {
@@ -16,6 +17,7 @@ const Home = () => {
             <Banner></Banner>
             <Products></Products>
             <Review></Review>
+            <Support></Support>
 
 
         </>

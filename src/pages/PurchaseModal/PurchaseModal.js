@@ -7,9 +7,11 @@ import Typography from '@mui/material/Typography';
 
 
 import { useForm } from "react-hook-form";
-import useFirebase from '../../hooks/useFirebase';
 import axios from 'axios';
 import { Button, Grid, TextField } from '@mui/material';
+
+
+import useAuth from '../../hooks/useAuth';
 
 const style = {
     position: 'absolute',
@@ -24,7 +26,7 @@ const style = {
     p: 4,
 };
 const PurchaseModal = ({ open, handleClose, productInfo }) => {
-    const { user } = useFirebase();
+    const { user } = useAuth();
     const [orders, setOrder] = React.useState({});
     // const { register, handleSubmit, } = useForm();
     const handleOnBlur = e => {
@@ -44,7 +46,7 @@ const PurchaseModal = ({ open, handleClose, productInfo }) => {
             status: "Pending",
             productInfo: productInfo,
         }
-        axios.post('http://localhost:5000/purchaseorder', order)
+        axios.post('https://safe-meadow-80713.herokuapp.com/purchaseorder', order)
             .then(res => {
                 // if (res.data.insertedId) {
                 //     alert("Succesfully Inserted")

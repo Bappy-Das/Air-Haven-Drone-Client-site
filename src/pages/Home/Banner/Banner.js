@@ -11,6 +11,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import { Grid } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 // import mavic2 from '../../../images/slide/mavic_2.jpg'
 // import mavic3 from '../../../images/slide/mavic_3.jpg'
 // import mavic1 from '../../../images/slide/1.jpg'
@@ -88,12 +89,19 @@ const Banner = () => {
                                         <Grid item xs={4} sx={{
                                             m: 5,
                                             height: 500,
+                                            // display: 'column',
                                             display: 'flex',
+                                            // flexDirection: 'column',
                                             justifyContent: 'space-around',
                                             alignItems: 'center'
                                         }}>
 
                                             <Typography variant="h2" gutterBottom component="div"> Mavic Mini 2</Typography>
+                                            <NavLink to="/"
+                                                style={{ textDecoration: 'none' }}
+                                            >
+                                                <Button variant="contained">Explore</Button>
+                                            </NavLink>
                                         </Grid>
                                     </Grid>
 

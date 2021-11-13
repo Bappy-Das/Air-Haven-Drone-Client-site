@@ -25,7 +25,7 @@ const ManageProduct = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://safe-meadow-80713.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [product])
@@ -33,7 +33,7 @@ const ManageProduct = () => {
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`http://localhost:5000/product/${id}`, { method: "DELETE" })
+            fetch(`https://safe-meadow-80713.herokuapp.com/product/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {

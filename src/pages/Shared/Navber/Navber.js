@@ -12,21 +12,11 @@ import { useTheme } from '@mui/material/styles';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { NavLink } from 'react-router-dom';
-import useFirebase from '../../../hooks/useFirebase';
-// import logo from '../../../images/Dronetastic-lo.png'
 
-// For Dark Theme
-// import { ThemeProvider, createTheme } from '@mui/material/styles';
-// const darkTheme = createTheme({
-//     palette: {
-//         mode: 'dark',
-//         primary: {
-//             main: '#1976d2',
-//         },
-//     },
-// });
+import useAuth from '../../../hooks/useAuth';
+
 const Navber = () => {
-    const { user, logOut } = useFirebase();
+    const { user, logOut } = useAuth();
     const theme = useTheme();
     const isMatches = useMediaQuery(theme.breakpoints.down('md'));
 

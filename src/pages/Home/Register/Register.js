@@ -10,9 +10,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import Navber from '../../Shared/Navber/Navber';
-import useFirebase from '../../../hooks/useFirebase';
+
+
+import useAuth from '../../../hooks/useAuth';
 
 function Copyright(props) {
     return (
@@ -27,8 +29,9 @@ function Copyright(props) {
 const theme = createTheme()
 
 const Register = () => {
-    const { register } = useFirebase()
+    const { register } = useAuth()
     const [loginData, setLoginData] = useState({});
+    const history = useHistory()
     const handleOnChange = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -39,6 +42,7 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         register(loginData.email, loginData.password, loginData.name, loginData.phone)
+
         event.preventDefault();
         // const data = new FormData(event.currentTarget);
 

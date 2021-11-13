@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import useFirebase from '../../../hooks/useFirebase';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,19 +7,21 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+
+import useAuth from '../../../hooks/useAuth';
 const MyOrder = () => {
-    const { user } = useFirebase();
+    const { user } = useAuth();
     const [orders, setOrder] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:5000/orders')
+        fetch('https://safe-meadow-80713.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [orders])
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`http://localhost:5000/order/${id}`, { method: "DELETE" })
+            fetch(`https://safe-meadow-80713.herokuapp.com/order/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router";
+import { useHistory } from "react-router";
 import firebaseAuthentication from "../firebase/firebase.init";
 
 firebaseAuthentication();
@@ -11,35 +11,28 @@ const useFirebase = () => {
     const [error, setError] = useState({});
     const [isLoading, setIsLoading] = useState(true)
     const auth = getAuth();
-    const location = useLocation()
-    const history = useHistory();
+
     const googleProvider = new GoogleAuthProvider();
 
     // signin with Google
     const singInUsingGoogle = () => {
         setIsLoading(true)
         return signInWithPopup(auth, googleProvider)
-
-            // .then(result => {
-            //     // setUser(result.user)
-            //     console.log(result.user)
-            // })
-            // .catch(error => {
-            //     setError(error.message)
-            // })
             .finally(() => setIsLoading(false))
 
     }
-    const register = (email, password, name) => {
+    const register = (email, password, name, history) => {
+        setIsLoading(true)
         createUserWithEmailAndPassword(auth, email, password)
+
             .then((userCredential) => {
                 const newUser = { email, displayName: name };
                 setUser(newUser)
 
-
                 // set DisplayName
                 updateProfile(auth.currentUser, {
                     displayName: name
+
                 }).then(() => {
 
                 }).catch((error) => {
@@ -50,28 +43,25 @@ const useFirebase = () => {
                 // save user info to database
                 saveUserData(email, name)
 
-                const user = userCredential.user;
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
 
-            });
-    }
-    const emailPassLogin = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                history.push(location.state?.from || '/')
-                // Signed in 
-                const user = userCredential.user;
-                // ...
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
+            .finally(() => setIsLoading(false))
+
+
     }
 
+    // Handle email pasword log in
+    const emailPassLogin = (email, password, location, history) => {
+        setIsLoading(true)
+        return signInWithEmailAndPassword(auth, email, password)
+
+            .finally(() => setIsLoading(false));
+    }
+
+
+    // User state checking
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
@@ -88,12 +78,14 @@ const useFirebase = () => {
     // Save user info to database
     const saveUserData = (email, displayName) => {
         const user = { email, displayName }
-        axios.post('http://localhost:5000/adduser', user)
+        axios.post('https://safe-meadow-80713.herokuapp.com/adduser', user)
             .then()
     }
+
+    // save data fro google log in
     const saveUserGoogle = (email, displayName) => {
         const user = { email, displayName }
-        axios.put('http://localhost:5000/adduser', user)
+        axios.put('https://safe-meadow-80713.herokuapp.com/adduser', user)
             .then()
     }
 
@@ -104,7 +96,7 @@ const useFirebase = () => {
         signOut(auth)
             .then(() => {
                 setUser({})
-                history.push(location.state?.from || '/')
+                // history.push(location.state?.from || '/')
             })
             .catch((error) => {
                 setError(error.message)

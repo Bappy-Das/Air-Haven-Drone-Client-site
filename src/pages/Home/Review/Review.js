@@ -1,50 +1,79 @@
 import React, { useEffect, useState } from 'react';
 import Carousel from 'react-material-ui-carousel'
-import { Paper, Button, Container, Typography, Rating } from '@mui/material'
-// import Paper from '@mui/material/Paper';
-// import Button from '@mui/material/Button';
+import { Paper, Container, Typography, Rating, Divider } from '@mui/material'
 
+import Box from '@mui/material/Box';
 
-// const images = [
-//     {
-//         label: 'San Francisco – Oakland Bay Bridge, United States',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1479152471347-3f2e62a2b2a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1048&q=80',
-//     },
-//     {
-//         label: 'Bird',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1520870121499-7dddb6ccbcde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80',
-//     },
-//     {
-//         label: 'Bali, Indonesia',
-//         imgPath:
-//             'https://images.unsplash.com/photo-1514598800938-f7125ea1aa1c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1031&q=80',
-//     }
-// ];
 
 const Review = () => {
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://safe-meadow-80713.herokuapp.com/review')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
     console.log(reviews)
     return (
-        <Container>
-            <h1>This is review</h1>
+        <Container xs={12} md={12} sx={{
+            textAlign: 'center',
+            my: 5
+        }}>
+            <Typography sx={{
+                fontWeight: 'bold',
+                my: 5,
+                color: '#6CA8F2'
+            }} gutterBottom variant="h3" component="div">
+                Happy Clients
+                <Divider xs={12} md={12} variant="middle"
+                    sx={{
+                        m: 5,
+                        color: '#6CA8F2',
+                        border: 1,
+                        mx: "auto",
+                        // width: 800
+
+                    }} />
+            </Typography>
+
             <Carousel>
                 {
-                    reviews?.map((item, i) => <div>
-                        <p>{item?.reviewText}</p>
-                        <Rating name="read-only" value={item?.review} readOnly />
-                        {/* <img style={{ width: '500px', height: '500px' }} src={item.imgPath} alt="" srcset="" /> */}
-                    </div>)
+                    reviews?.map((item, i) => <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            flexWrap: 'wrap',
+                            '& > :not(style)': {
+                                m: 1,
+                                p: 3,
+                                width: 500,
+                                maxWidth: 600,
+                                height: 'auto',
+                            },
+                        }}
+                    >
+
+                        <Paper elevation={3} >
+                            <Box sx={{ height: 'auto' }} >
+                                <Box sx={{ mt: 2, mb: 3 }}>
+                                    <Typography variant="body1" gutterBottom>
+                                        &#10075;  {item?.reviewText}&#10076;
+                                    </Typography>
+                                    <Rating name="read-only" value={item?.rate} readOnly />
+                                </Box>
+
+                                <Typography variant="h6" gutterBottom>
+                                    {item?.userName}
+                                </Typography>
+                                <Typography variant="body1" gutterBottom>
+                                    {item?.email}
+                                </Typography>
+                            </Box>
+                        </Paper>
+                    </Box >)
                 }
-            </Carousel>
-        </Container>
+            </Carousel >
+        </Container >
     );
 };
 

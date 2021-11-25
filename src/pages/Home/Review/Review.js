@@ -3,7 +3,7 @@ import Carousel from 'react-material-ui-carousel'
 import { Paper, Container, Typography, Rating, Divider } from '@mui/material'
 
 import Box from '@mui/material/Box';
-
+import { BlinkingCursorTextBuilder, FloatingLettersTextBuilder } from 'react-animated-text-builders'
 
 const Review = () => {
     const [reviews, setReviews] = useState([])
@@ -19,6 +19,7 @@ const Review = () => {
             textAlign: 'center',
             my: 5
         }}>
+
             <Typography sx={{
                 fontWeight: 'bold',
                 my: 5,
@@ -35,6 +36,28 @@ const Review = () => {
 
                     }} />
             </Typography>
+            {/* 
+            <FloatingLettersTextBuilder
+                floatingSpeed={500}
+                lettersAppearanceDelay={400}
+                animationMaxMargin={"200px"}
+                animationMinMargin={"0px"}
+                style={{ fontSize: "50px" }}
+
+            >
+
+                Happy Clients
+            </FloatingLettersTextBuilder>
+ */}
+            <FloatingLettersTextBuilder
+                style={{ fontSize: "50px" }}
+                floatingSpeed={500}
+                lettersAppearanceDelay={250}
+            >
+                Floating Letters
+            </FloatingLettersTextBuilder>
+
+
 
             <Carousel>
                 {

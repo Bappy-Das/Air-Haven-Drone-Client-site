@@ -11,6 +11,21 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import useProducts from '../../../hooks/useProducts';
 
+// react-animated-text-builders
+import { BlinkingCursorTextBuilder } from 'react-animated-text-builders'
+
+// reveal fade animation
+import Fade from 'react-reveal/Fade';
+
+// Aos animation
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+// ..
+AOS.init();
+
+
+
+
 const Products = () => {
     const { product } = useProducts()
     const homeProduct = product.slice(0, 6)
@@ -18,16 +33,17 @@ const Products = () => {
     return (
         <>
             <Container>
+                <Fade left>
+                    <Typography sx={{
+                        fontWeight: 'bold',
+                        my: 5,
+                        color: '#6CA8F2',
+                        textAlign: 'center'
+                    }} gutterBottom variant="h3" component="div">
+                        Mavic Series
 
-                <Typography sx={{
-                    fontWeight: 'bold',
-                    my: 5,
-                    color: '#6CA8F2',
-                    textAlign: 'center'
-                }} gutterBottom variant="h3" component="div">
-                    Mavic Series
-
-                </Typography>
+                    </Typography>
+                </Fade>
                 <Typography sx={{
                     fontWeight: 'bold',
                     my: 5,
@@ -52,13 +68,15 @@ const Products = () => {
                             homeProduct.map(drone => <Grid item xs={12} md={4}>
                                 <Card sx={{ maxWidth: 345 }}>
                                     <CardActionArea>
-                                        <CardMedia
+                                        <div data-aos="zoom-in">
+                                            <CardMedia
 
-                                            component="img"
-                                            height="200"
-                                            image={drone.img}
-                                            alt="green iguana"
-                                        />
+                                                component="img"
+                                                height="200"
+                                                image={drone.img}
+                                                alt="green iguana"
+                                            />
+                                        </div>
                                         <CardContent>
                                             <Typography sx={{ fontWeight: 'bold', ml: 2 }} gutterBottom variant="h5" component="div">
                                                 {drone.name}
@@ -91,7 +109,7 @@ const Products = () => {
                                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                         >
                                                             <TableCell component="th" scope="row">
-                                                                Max Flight Time (no wind):
+                                                                Flight Time (no wind):
                                                             </TableCell>
                                                             <TableCell align="right">{drone?.Max_flight_time} minutes</TableCell>
 
@@ -100,7 +118,7 @@ const Products = () => {
                                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                         >
                                                             <TableCell component="th" scope="row">
-                                                                Max Flight Distance :
+                                                                Flight Distance :
                                                             </TableCell>
                                                             <TableCell align="right">{drone?.distance} km</TableCell>
 
@@ -144,6 +162,7 @@ const Products = () => {
                         </Typography>
                     </NavLink>
                 </Box>
+
             </Container>
         </>
     );

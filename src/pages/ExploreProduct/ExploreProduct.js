@@ -76,7 +76,7 @@ const ExploreProduct = () => {
                                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                         >
                                                             <TableCell component="th" scope="row">
-                                                                Max Flight Time (no wind):
+                                                                Flight Time:
                                                             </TableCell>
                                                             <TableCell align="right">{drone?.Max_flight_time} minutes</TableCell>
 
@@ -85,7 +85,7 @@ const ExploreProduct = () => {
                                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                                         >
                                                             <TableCell component="th" scope="row">
-                                                                Max Flight Distance :
+                                                                Flight Distance :
                                                             </TableCell>
                                                             <TableCell align="right">{drone?.distance} km</TableCell>
 

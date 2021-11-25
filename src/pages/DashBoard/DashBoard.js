@@ -206,32 +206,32 @@ function DashBoard(props) {
             >
                 <Toolbar />
                 <Switch>
-                    <Route exact path={path}>
+                    <PrivateRoute exact path={path}>
                         <DashBoardHome></DashBoardHome>
-                    </Route>
-                    <Route path={`${path}/addproduct`}>
+                    </PrivateRoute>
+                    <AdminRoute path={`${path}/addproduct`}>
                         <AddDrone></AddDrone>
-                    </Route>
-                    <Route path={`${path}/manageorder`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageorder`}>
                         <ManageOder></ManageOder>
-                    </Route>
-                    <Route path={`${path}/makeadmin`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeadmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    <Route path={`${path}/manageproduct`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/manageproduct`}>
                         <ManageProduct></ManageProduct>
-                    </Route>
+                    </AdminRoute>
 
 
-                    <Route path={`${path}/myorder`}>
+                    <PrivateRoute path={`${path}/myorder`}>
                         <MyOrder></MyOrder>
-                    </Route>
-                    <Route path={`${path}/addreview`}>
+                    </PrivateRoute>
+                    <PrivateRoute path={`${path}/addreview`}>
                         <AddReview></AddReview>
-                    </Route>
-                    <Route path={`${path}/payement`}>
+                    </PrivateRoute>
+                    <PrivateRoute path={`${path}/payement`}>
                         <Payment></Payment>
-                    </Route>
+                    </PrivateRoute>
 
                 </Switch>
 

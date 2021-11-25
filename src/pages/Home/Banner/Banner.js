@@ -97,7 +97,7 @@ const Banner = () => {
                                         }}>
 
                                             <Typography variant="h2" gutterBottom component="div"> Mavic Mini 2</Typography>
-                                            <NavLink to="/"
+                                            <NavLink to="allproducts"
                                                 style={{ textDecoration: 'none' }}
                                             >
                                                 <Button variant="contained">Explore</Button>

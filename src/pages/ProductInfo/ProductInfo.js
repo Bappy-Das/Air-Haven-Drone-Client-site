@@ -62,28 +62,26 @@ const ProductInfo = () => {
                                 </Typography>
                                 <Divider />
                                 <Typography sx={{ p: 2 }} variant="subtitle1" gutterBottom component="div">
-                                    subtitle1. Lorem ipsum dolor sit amet
+                                    Takeoff Weight : {productInfo?.weight}
                                 </Typography>
                                 <Divider />
                                 <Typography sx={{ p: 2 }} variant="subtitle1" gutterBottom component="div">
-                                    subtitle1. Lorem ipsum dolor sit amet
+                                    Diagonal Length : {productInfo?.length}
                                 </Typography>
                                 <Divider />
                                 <Typography sx={{ p: 2 }} variant="subtitle1" gutterBottom component="div">
-                                    subtitle1. Lorem ipsum dolor sit amet
+                                    Max Flight Time : {productInfo?.Max_flight_time}
                                 </Typography>
                                 <Divider />
                                 <Typography sx={{ p: 2 }} variant="subtitle1" gutterBottom component="div">
-                                    subtitle1. Lorem ipsum dolor sit amet
+                                    Diagonal Length : {productInfo?.distance}
                                 </Typography>
                                 <Divider />
                                 <Typography sx={{ p: 2 }} variant="subtitle1" gutterBottom component="div">
-                                    subtitle1. Lorem ipsum dolor sit amet
+                                    Operating Temperature : {productInfo?.temperature}
                                 </Typography>
                                 <Divider />
-                                <Typography sx={{ p: 1 }} variant="subtitle1" gutterBottom component="div">
-                                    subtitle1. Lorem ipsum dolor sit amet
-                                </Typography>
+
                                 <Divider />
                                 <Button
                                     onClick={handleOpen}

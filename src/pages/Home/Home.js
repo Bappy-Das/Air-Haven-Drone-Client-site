@@ -24,12 +24,12 @@ const Home = () => {
 
             <Products></Products>
 
-            {/* <Box>
+            <Box>
                 <Typography sx={{ fontWeight: 'bold', textAlign: 'center', color: '#6CA8F2' }} variant="h4" gutterBottom component="div">
                     Explore DJI Products in Different Fields
                 </Typography>
             </Box>
-            <ProductField></ProductField> */}
+            <ProductField></ProductField>
             <Review></Review>
 
             <Support></Support>

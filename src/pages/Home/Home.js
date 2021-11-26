@@ -8,6 +8,7 @@ import Navber from '../Shared/Navber/Navber';
 
 
 import Banner from './Banner/Banner';
+import Ban2 from './Banner/Ban2';
 import Products from './Products/Products';
 import Review from './Review/Review';
 import Support from './Support/Support';
@@ -19,8 +20,8 @@ const Home = () => {
     return (
         <>
             <Navber></Navber>
-            {/* <Ban2></Ban2> */}
-            <Banner></Banner>
+            <Ban2></Ban2>
+            {/* <Banner></Banner> */}
 
             <Products></Products>
 

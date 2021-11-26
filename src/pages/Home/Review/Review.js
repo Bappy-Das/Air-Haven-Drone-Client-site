@@ -49,13 +49,7 @@ const Review = () => {
                 Happy Clients
             </FloatingLettersTextBuilder>
  */}
-            <FloatingLettersTextBuilder
-                style={{ fontSize: "50px" }}
-                floatingSpeed={500}
-                lettersAppearanceDelay={250}
-            >
-                Floating Letters
-            </FloatingLettersTextBuilder>
+
 
 
 

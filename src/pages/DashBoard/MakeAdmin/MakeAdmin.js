@@ -24,7 +24,7 @@ const MakeAdmin = () => {
     const handleMakeAdmin = e => {
         const email = { adminEmail };
 
-        fetch('https://safe-meadow-80713.herokuapp.com/adduser/admin', {
+        fetch('https://hidden-eyrie-24274.herokuapp.com/adduser/admin', {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'

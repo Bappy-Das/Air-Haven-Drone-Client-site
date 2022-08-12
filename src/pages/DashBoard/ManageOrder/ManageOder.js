@@ -22,7 +22,7 @@ const ManageOder = () => {
     const [deleteAlert, setDeleteAlert] = useState(false);
     const [status, setStatus] = useState(false);
     useEffect(() => {
-        fetch('https://safe-meadow-80713.herokuapp.com/orders')
+        fetch('https://hidden-eyrie-24274.herokuapp.com/orders')
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [status])
@@ -31,7 +31,7 @@ const ManageOder = () => {
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`https://safe-meadow-80713.herokuapp.com/order/${id}`, { method: "DELETE" })
+            fetch(`https://hidden-eyrie-24274.herokuapp.com/order/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
@@ -46,7 +46,7 @@ const ManageOder = () => {
     }
     const handleStatus = id => {
         console.log(id)
-        axios.put(`https://safe-meadow-80713.herokuapp.com/updatestatus/${id}`)
+        axios.put(`https://hidden-eyrie-24274.herokuapp.com/updatestatus/${id}`)
             // .then(res => console.log("Order Approved"))
             .then((data) => setStatus(true))
 

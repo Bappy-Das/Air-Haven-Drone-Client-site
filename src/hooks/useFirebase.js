@@ -35,6 +35,7 @@ const useFirebase = () => {
 
                 }).then(() => {
 
+
                 }).catch((error) => {
 
                 });
@@ -78,14 +79,14 @@ const useFirebase = () => {
     // Save user info to database
     const saveUserData = (email, displayName) => {
         const user = { email, displayName }
-        axios.post('https://safe-meadow-80713.herokuapp.com/adduser', user)
+        axios.post('https://hidden-eyrie-24274.herokuapp.com/adduser', user)
             .then()
     }
 
     // save data fro google log in
     const saveUserGoogle = (email, displayName) => {
         const user = { email, displayName }
-        axios.put('https://safe-meadow-80713.herokuapp.com/adduser', user)
+        axios.put('https://hidden-eyrie-24274.herokuapp.com/adduser', user)
             .then()
     }
 

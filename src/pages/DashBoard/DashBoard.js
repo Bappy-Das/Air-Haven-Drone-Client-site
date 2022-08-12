@@ -29,6 +29,7 @@ import MyOrder from '../DashBoard/MyOrder/MyOrder'
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Footer from '../Shared/Footer/Footer';
 
 
 const drawerWidth = 240;
@@ -234,10 +235,13 @@ function DashBoard(props) {
                     </PrivateRoute>
 
                 </Switch>
-
+                {/* <Footer></Footer> */}
             </Box>
+
         </Box>
+
     );
+
 }
 
 DashBoard.propTypes = {

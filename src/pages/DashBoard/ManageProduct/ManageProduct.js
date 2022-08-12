@@ -25,7 +25,7 @@ const ManageProduct = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch('https://safe-meadow-80713.herokuapp.com/products')
+        fetch('https://hidden-eyrie-24274.herokuapp.com/products')
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [product])
@@ -33,7 +33,7 @@ const ManageProduct = () => {
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`https://safe-meadow-80713.herokuapp.com/product/${id}`, { method: "DELETE" })
+            fetch(`https://hidden-eyrie-24274.herokuapp.com/product/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
@@ -93,7 +93,6 @@ const ManageProduct = () => {
                                                 color="error">
                                                 Delete
                                             </Button>
-
                                         </TableCell>
                                     </TableRow>)
                                 }
@@ -114,8 +113,6 @@ const ManageProduct = () => {
                         </Box>
                 }
             </TableContainer>
-
-
         </div>
     );
 };

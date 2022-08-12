@@ -46,7 +46,7 @@ const PurchaseModal = ({ open, handleClose, productInfo }) => {
             status: "Pending",
             productInfo: productInfo,
         }
-        axios.post('https://safe-meadow-80713.herokuapp.com/purchaseorder', order)
+        axios.post('https://hidden-eyrie-24274.herokuapp.com/purchaseorder', order)
             .then(res => {
                 // if (res.data.insertedId) {
                 //     alert("Succesfully Inserted")

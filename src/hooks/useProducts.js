@@ -4,10 +4,11 @@ const useProducts = () => {
     const [product, setProduct] = useState([])
 
     useEffect(() => {
-        fetch('https://safe-meadow-80713.herokuapp.com/products')
+        fetch('https://hidden-eyrie-24274.herokuapp.com/products')
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
+                console.log(data)
 
             })
     }, [product])

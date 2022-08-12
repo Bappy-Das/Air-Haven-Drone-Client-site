@@ -12,6 +12,7 @@ import Ban2 from './Banner/Ban2';
 import Products from './Products/Products';
 import Review from './Review/Review';
 import Support from './Support/Support';
+import TextBuilder from './TextBuilder/TextBuilder';
 
 
 const Home = () => {
@@ -35,7 +36,7 @@ const Home = () => {
 
             <Support></Support>
 
-
+            <TextBuilder></TextBuilder>
         </>
     );
 };

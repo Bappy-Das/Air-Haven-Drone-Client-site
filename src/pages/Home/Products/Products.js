@@ -11,8 +11,6 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 import useProducts from '../../../hooks/useProducts';
 
-// react-animated-text-builders
-import { BlinkingCursorTextBuilder } from 'react-animated-text-builders'
 
 // reveal fade animation
 import Fade from 'react-reveal/Fade';

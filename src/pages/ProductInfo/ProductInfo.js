@@ -21,7 +21,7 @@ const ProductInfo = () => {
     const { productId } = useParams();
 
     useEffect(() => {
-        fetch(`https://safe-meadow-80713.herokuapp.com/product/${productId}`)
+        fetch(`https://hidden-eyrie-24274.herokuapp.com/product/${productId}`)
             .then(res => res.json())
             .then(data => setProductInfo(data))
     }, [])

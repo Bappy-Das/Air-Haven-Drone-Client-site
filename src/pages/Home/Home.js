@@ -12,6 +12,7 @@ import Ban2 from './Banner/Ban2';
 import Products from './Products/Products';
 import Review from './Review/Review';
 import Support from './Support/Support';
+import LoadingSkeleton from '../components/skeleton/LoadingSkeleton';
 // import TextBuilder from './TextBuilder/TextBuilder';
 
 
@@ -35,7 +36,7 @@ const Home = () => {
             <Review></Review>
 
             <Support></Support>
-
+            {/* <LoadingSkeleton></LoadingSkeleton> */}
             {/* <TextBuilder></TextBuilder> */}
         </>
     );

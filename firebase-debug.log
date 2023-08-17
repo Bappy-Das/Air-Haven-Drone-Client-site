@@ -1,0 +1,19 @@
+[debug] [2023-08-17T10:24:08.017Z] ----------------------------------------------------------------------
+[debug] [2023-08-17T10:24:08.018Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HP\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-08-17T10:24:08.019Z] CLI Version:   12.4.8
+[debug] [2023-08-17T10:24:08.019Z] Platform:      win32
+[debug] [2023-08-17T10:24:08.019Z] Node Version:  v16.15.0
+[debug] [2023-08-17T10:24:08.026Z] Time:          Thu Aug 17 2023 16:24:08 GMT+0600 (Bangladesh Standard Time)
+[debug] [2023-08-17T10:24:08.026Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-17T10:24:08.089Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-17T10:24:08.090Z] > authorizing via signed-in user (bappydas.bd51@gmail.com)
+[debug] [2023-08-17T10:24:08.090Z] [iam] checking project airhaven-a6c33 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-08-17T10:24:08.091Z] > refreshing access token with scopes: []
+[debug] [2023-08-17T10:24:08.092Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-08-17T10:24:08.092Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-08-17T10:24:08.504Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-08-17T10:24:08.504Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-08-17T10:24:08.515Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/airhaven-a6c33:testIamPermissions [none]
+[debug] [2023-08-17T10:24:08.515Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/airhaven-a6c33:testIamPermissions x-goog-quota-user=projects/airhaven-a6c33
+[debug] [2023-08-17T10:24:08.516Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/airhaven-a6c33:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}

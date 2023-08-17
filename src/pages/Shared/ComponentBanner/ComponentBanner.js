@@ -33,7 +33,7 @@ const ComponentBanner = (props) => {
                             textAlign: "center"
                         }}>
 
-                            <Typography variant="h2" gutterBottom component="div">{props.title}</Typography>
+                            <Typography sx={{ fontWeight: '500' }} variant="h2" gutterBottom component="div">{props.title}</Typography>
                             <Divider light />
                             <Typography variant="h6" gutterBottom component="div">{props.shortInfo}</Typography>
 

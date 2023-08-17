@@ -25,7 +25,7 @@ const ManageProduct = () => {
 
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch('https://hidden-eyrie-24274.herokuapp.com/products')
+        fetch('https://air-haven-drone-server-update.vercel.app/products')
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [product])
@@ -33,7 +33,7 @@ const ManageProduct = () => {
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`https://hidden-eyrie-24274.herokuapp.com/product/${id}`, { method: "DELETE" })
+            fetch(`https://air-haven-drone-server-update.vercel.app/product/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {

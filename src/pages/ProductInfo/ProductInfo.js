@@ -21,7 +21,7 @@ const ProductInfo = () => {
     const { productId } = useParams();
 
     useEffect(() => {
-        fetch(`https://hidden-eyrie-24274.herokuapp.com/product/${productId}`)
+        fetch(`https://air-haven-drone-server-update.vercel.app/product/${productId}`)
             .then(res => res.json())
             .then(data => setProductInfo(data))
     }, [])

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 const AddDrone = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        axios.post('https://hidden-eyrie-24274.herokuapp.com/addservice', data)
+        axios.post('https://air-haven-drone-server-update.vercel.app/addservice', data)
             .then(res => {
                 console.log(res)
                 reset()

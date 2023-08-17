@@ -36,7 +36,7 @@ const Home = () => {
 
             <Support></Support>
 
-            <TextBuilder></TextBuilder>
+            {/* <TextBuilder></TextBuilder> */}
         </>
     );
 };

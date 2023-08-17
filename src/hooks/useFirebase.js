@@ -79,14 +79,14 @@ const useFirebase = () => {
     // Save user info to database
     const saveUserData = (email, displayName) => {
         const user = { email, displayName }
-        axios.post('https://hidden-eyrie-24274.herokuapp.com/adduser', user)
+        axios.post('https://air-haven-drone-server-update.vercel.app/adduser', user)
             .then()
     }
 
     // save data fro google log in
     const saveUserGoogle = (email, displayName) => {
         const user = { email, displayName }
-        axios.put('https://hidden-eyrie-24274.herokuapp.com/adduser', user)
+        axios.put('https://air-haven-drone-server-update.vercel.app/adduser', user)
             .then()
     }
 

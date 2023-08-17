@@ -15,14 +15,14 @@ const MyOrder = () => {
     const [orders, setOrder] = useState();
 
     useEffect(() => {
-        fetch('https://hidden-eyrie-24274.herokuapp.com/orders')
+        fetch('https://air-haven-drone-server-update.vercel.app/orders')
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [orders])
     const handleDelete = id => {
         var x = window.confirm("Are you sure you want to delete?");
         if (x) {
-            fetch(`https://hidden-eyrie-24274.herokuapp.com/order/${id}`, { method: "DELETE" })
+            fetch(`https://air-haven-drone-server-update.vercel.app/order/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {

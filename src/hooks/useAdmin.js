@@ -7,7 +7,7 @@ const useAdmin = () => {
     const { user } = useAuth();
     const [admin, setAdmin] = useState(false)
     useEffect(() => {
-        fetch(`https://hidden-eyrie-24274.herokuapp.com/users/${user?.email}`)
+        fetch(`https://air-haven-drone-server-update.vercel.app/users/${user?.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data?.admin))
     }, [user?.email])

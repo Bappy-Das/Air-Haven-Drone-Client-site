@@ -26,7 +26,7 @@ const AddReview = () => {
         data.userName = user.displayName;
         data.email = user.email;
         data.rate = value;
-        axios.post('https://hidden-eyrie-24274.herokuapp.com/addreview', data)
+        axios.post('https://air-haven-drone-server-update.vercel.app/addreview', data)
             .then(res => {
                 console.log(res)
                 reset()

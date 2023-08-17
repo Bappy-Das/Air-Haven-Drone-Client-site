@@ -1,18 +1,18 @@
 
-import { CircularProgress, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
-import useProducts from '../../hooks/useProducts';
+// import useProducts from '../../hooks/useProducts';
 import ProductField from '../ProductField/ProductField';
 import Navber from '../Shared/Navber/Navber';
 
 
-import Banner from './Banner/Banner';
+// import Banner from './Banner/Banner';
 import Ban2 from './Banner/Ban2';
 import Products from './Products/Products';
 import Review from './Review/Review';
 import Support from './Support/Support';
-import TextBuilder from './TextBuilder/TextBuilder';
+// import TextBuilder from './TextBuilder/TextBuilder';
 
 
 const Home = () => {

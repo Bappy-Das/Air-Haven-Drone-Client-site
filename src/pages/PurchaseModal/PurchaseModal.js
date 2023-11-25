@@ -5,12 +5,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 
-
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { Button, Grid, TextField } from '@mui/material';
-
-
 import useAuth from '../../hooks/useAuth';
 
 const style = {

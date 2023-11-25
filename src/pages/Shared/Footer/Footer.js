@@ -92,12 +92,6 @@ const Footer = () => {
                             <TwitterIcon sx={{ mr: 1 }} />
                             <InstagramIcon sx={{ mr: 1 }} />
                             <YouTubeIcon />
-
-                            <Box>
-                                <Button sx={{ mt: 3 }} variant="contained" color="success">
-                                    Contact Us
-                                </Button>
-                            </Box>
                         </Grid>
                     </Grid>
                 </Box>
